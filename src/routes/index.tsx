@@ -129,40 +129,40 @@ function Nav() {
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-hero text-primary-foreground">
-      <img src={heroBg} alt="" aria-hidden className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-screen" />
-      <div className="absolute -right-32 -top-32 h-[480px] w-[480px] rounded-full bg-[var(--gold)] opacity-20 blur-3xl" />
-      <div className="absolute -left-24 bottom-0 h-[380px] w-[380px] rounded-full bg-[oklch(0.5_0.15_260)] opacity-30 blur-3xl" />
+      <img src={heroBg} alt="" aria-hidden className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-screen animate-fade-in" />
+      <div className="animate-blob absolute -right-32 -top-32 h-[480px] w-[480px] rounded-full bg-[var(--gold)] opacity-20 blur-3xl" />
+      <div className="animate-blob absolute -left-24 bottom-0 h-[380px] w-[380px] rounded-full bg-[oklch(0.5_0.15_260)] opacity-30 blur-3xl" style={{ animationDelay: "-6s" }} />
 
       <div className="container-x relative grid items-center gap-14 py-20 md:grid-cols-[1.05fr_0.95fr] md:py-28 lg:py-32">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.22em] text-white/80 backdrop-blur">
+          <div className="animate-fade-up inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.22em] text-white/80 backdrop-blur" style={{ animationDelay: "0.05s" }}>
             <Sparkles className="h-3.5 w-3.5 text-[var(--gold)]" />
             Kosha Clinics · Dehradun
           </div>
 
-          <h1 className="mt-7 font-display text-5xl leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 className="animate-fade-up mt-7 font-display text-5xl leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl" style={{ animationDelay: "0.15s" }}>
             Expert care for your <span className="italic text-gradient-gold">digestive</span> & liver health.
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">
+          <p className="animate-fade-up mt-6 max-w-xl text-lg leading-relaxed text-white/75" style={{ animationDelay: "0.3s" }}>
             Meet <span className="text-white">Dr. Lakshmi Rao</span> — Gastrointestinal &
             Hepato-Biliary Specialist offering personalised, advanced gastro care in Dehradun.
           </p>
 
-          <div className="mt-9 flex flex-wrap items-center gap-3">
-            <a href={TEL} className="group inline-flex items-center gap-2 rounded-full bg-[var(--gold)] px-7 py-3.5 text-sm font-semibold text-primary shadow-luxe transition hover:brightness-110">
+          <div className="animate-fade-up mt-9 flex flex-wrap items-center gap-3" style={{ animationDelay: "0.45s" }}>
+            <a href={TEL} className="btn-shine group inline-flex items-center gap-2 rounded-full bg-[var(--gold)] px-7 py-3.5 text-sm font-semibold text-primary shadow-luxe transition hover:brightness-110 hover:-translate-y-0.5">
               <Phone className="h-4 w-4" /> Call {PHONE_DISPLAY}
             </a>
-            <a href={WHATSAPP} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-7 py-3.5 text-sm font-medium text-white backdrop-blur transition hover:bg-white/10">
+            <a href={WHATSAPP} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-7 py-3.5 text-sm font-medium text-white backdrop-blur transition hover:bg-white/10 hover:-translate-y-0.5">
               <MessageCircle className="h-4 w-4" /> WhatsApp
             </a>
           </div>
 
-          <div className="mt-10 flex items-center gap-6 border-t border-white/10 pt-7">
+          <div className="animate-fade-up mt-10 flex items-center gap-6 border-t border-white/10 pt-7" style={{ animationDelay: "0.6s" }}>
             <div className="flex items-center gap-2">
               <div className="flex">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-[var(--gold)] text-[var(--gold)]" />
+                  <Star key={i} className="h-4 w-4 fill-[var(--gold)] text-[var(--gold)] animate-fade-in" style={{ animationDelay: `${0.7 + i * 0.08}s` }} />
                 ))}
               </div>
               <span className="text-sm font-medium text-white">4.6</span>
@@ -173,9 +173,9 @@ function Hero() {
           </div>
         </div>
 
-        <div className="relative">
-          <div className="absolute inset-0 -translate-x-6 translate-y-6 rounded-[2rem] bg-[var(--gold)]/30 blur-2xl" />
-          <div className="relative overflow-hidden rounded-[2rem] border border-white/15 bg-white/5 shadow-luxe backdrop-blur">
+        <div className="animate-scale-in relative" style={{ animationDelay: "0.25s" }}>
+          <div className="animate-blob absolute inset-0 -translate-x-6 translate-y-6 rounded-[2rem] bg-[var(--gold)]/30 blur-2xl" />
+          <div className="animate-float relative overflow-hidden rounded-[2rem] border border-white/15 bg-white/5 shadow-luxe backdrop-blur">
             <img
               src={doctorAsset.url}
               alt="Dr. Lakshmi Rao, Gastroenterologist in Dehradun"
