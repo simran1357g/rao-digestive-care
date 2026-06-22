@@ -287,15 +287,16 @@ function Services() {
         </div>
 
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map(({ icon: Icon, title, desc }) => (
-            <article key={title} className="group relative overflow-hidden rounded-2xl border border-border bg-card p-7 transition hover:-translate-y-1 hover:shadow-luxe">
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent opacity-0 transition group-hover:opacity-100" />
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/5 text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
+          {services.map(({ icon: Icon, title, desc }, i) => (
+            <Reveal key={title} as="article" delay={(i % 4) as 0 | 1 | 2 | 3} className="card-lift group relative overflow-hidden rounded-2xl border border-border bg-card p-7 hover:shadow-luxe">
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent opacity-0 transition group-hover:opacity-100" />
+              <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-[var(--gold)]/10 opacity-0 blur-2xl transition duration-500 group-hover:opacity-100" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/5 text-primary transition duration-500 group-hover:bg-primary group-hover:text-primary-foreground group-hover:rotate-6">
                 <Icon className="h-5 w-5" />
               </div>
               <h3 className="mt-6 font-display text-xl text-primary">{title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{desc}</p>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>
