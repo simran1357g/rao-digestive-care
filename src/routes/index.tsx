@@ -277,14 +277,14 @@ function Services() {
   return (
     <section id="services" className="bg-secondary/50 py-24 md:py-32">
       <div className="container-x">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <SectionLabel>Specialised Services</SectionLabel>
           <h2 className="mt-5 font-display text-4xl md:text-5xl">Comprehensive digestive & liver care</h2>
           <p className="mt-5 text-muted-foreground">
             From routine consultations to advanced endoscopic procedures — delivered with precision,
             empathy and modern technology.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {services.map(({ icon: Icon, title, desc }, i) => (
