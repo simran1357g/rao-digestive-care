@@ -5,7 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-display: "Cormorant Garamond", serif;
+  --font-display: "Playfair Display", "Cormorant Garamond", serif;
+  --font-serif-caps: "Cinzel", serif;
   --font-sans: "Inter", system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
