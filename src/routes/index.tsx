@@ -193,8 +193,8 @@ function TrustBar() {
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.28em] text-[var(--gold)]">
-      <span className="h-px w-8 bg-[var(--gold)]" /> {children}
+    <div className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.4em] text-[var(--gold)]" style={{ fontFamily: "var(--font-serif-caps)" }}>
+      <span className="h-px w-10 bg-[var(--gold)]" /> {children}
     </div>
   );
 }
