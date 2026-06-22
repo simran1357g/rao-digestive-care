@@ -228,11 +228,11 @@ function About() {
   return (
     <section id="about" className="py-24 md:py-32">
       <div className="container-x grid gap-14 md:grid-cols-2 md:items-center">
-        <div className="relative">
-          <div className="overflow-hidden rounded-[2rem] shadow-luxe">
+        <Reveal className="relative">
+          <div className="img-zoom overflow-hidden rounded-[2rem] shadow-luxe">
             <img src={interior1Asset.url} alt="Inside Kosha Clinics, Dehradun" className="h-[520px] w-full object-cover" loading="lazy" />
           </div>
-          <div className="absolute -bottom-8 -right-4 hidden w-60 rounded-2xl border border-border bg-card p-5 shadow-luxe md:block">
+          <div className="absolute -bottom-8 -right-4 hidden w-60 rounded-2xl border border-border bg-card p-5 shadow-luxe md:block animate-float">
             <div className="flex items-center gap-2 text-[var(--gold)]">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} className="h-4 w-4 fill-current" />
@@ -243,9 +243,9 @@ function About() {
             </p>
             <p className="mt-2 text-xs uppercase tracking-widest text-muted-foreground">Google Review</p>
           </div>
-        </div>
+        </Reveal>
 
-        <div>
+        <Reveal delay={1}>
           <SectionLabel>About the Doctor</SectionLabel>
           <h2 className="mt-5 font-display text-4xl leading-tight md:text-5xl">
             A trusted specialist in <span className="italic text-primary">gastro & liver</span> care.
@@ -258,16 +258,16 @@ function About() {
           </p>
           <ul className="mt-8 grid gap-3 sm:grid-cols-2">
             {trustPoints.map((p) => (
-              <li key={p} className="flex items-start gap-2 text-sm">
+              <li key={p} className="flex items-start gap-2 text-sm transition hover:translate-x-1">
                 <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--gold)]" />
                 <span className="text-foreground/80">{p}</span>
               </li>
             ))}
           </ul>
-          <a href="#contact" className="mt-10 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-soft transition hover:opacity-90">
-            Book a Consultation <ArrowRight className="h-4 w-4" />
+          <a href="#contact" className="btn-shine mt-10 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-soft transition hover:-translate-y-0.5 hover:opacity-95">
+            Book a Consultation <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
           </a>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
