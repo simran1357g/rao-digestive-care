@@ -342,25 +342,25 @@ function Clinic() {
   return (
     <section id="clinic" className="py-24 md:py-32">
       <div className="container-x">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <SectionLabel>The Clinic</SectionLabel>
           <h2 className="mt-5 font-display text-4xl md:text-5xl">A space designed for healing</h2>
           <p className="mt-5 text-muted-foreground">
             Located in the heart of Race Course, Dehradun — Kosha Clinics offers a calm,
             hospitality-inspired environment for unhurried consultations and modern procedures.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-14 grid gap-5 md:grid-cols-3">
-          <div className="overflow-hidden rounded-2xl shadow-soft md:col-span-2 md:row-span-2">
+          <Reveal className="img-zoom overflow-hidden rounded-2xl shadow-soft md:col-span-2 md:row-span-2">
             <img src={interior2Asset.url} alt="Kosha Clinics reception" className="h-full w-full object-cover" loading="lazy" />
-          </div>
-          <div className="overflow-hidden rounded-2xl shadow-soft">
+          </Reveal>
+          <Reveal delay={1} className="img-zoom overflow-hidden rounded-2xl shadow-soft">
             <img src={exteriorAsset.url} alt="Kosha Clinics entrance, Dehradun" className="h-64 w-full object-cover" loading="lazy" />
-          </div>
-          <div className="overflow-hidden rounded-2xl shadow-soft">
+          </Reveal>
+          <Reveal delay={2} className="img-zoom overflow-hidden rounded-2xl shadow-soft">
             <img src={interior1Asset.url} alt="Kosha Clinics waiting area" className="h-64 w-full object-cover" loading="lazy" />
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
