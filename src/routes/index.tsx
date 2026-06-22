@@ -67,12 +67,15 @@ function Home() {
 function Logo({ light = false }: { light?: boolean }) {
   return (
     <a href="#top" className="flex items-center gap-3">
-      <div className={`flex h-11 w-11 items-center justify-center rounded-full border ${light ? "border-white/30 bg-white/10" : "border-primary/15 bg-primary/5"}`}>
-        <span className={`font-display text-2xl leading-none ${light ? "text-white" : "text-primary"}`}>K</span>
-      </div>
-      <div className="leading-tight">
-        <div className={`font-display text-lg ${light ? "text-white" : "text-primary"}`}>Dr. Lakshmi Rao</div>
-        <div className={`text-[10px] uppercase tracking-[0.22em] ${light ? "text-white/70" : "text-muted-foreground"}`}>Gastro · Hepato-Biliary</div>
+      <img
+        src={logo}
+        alt="Kosha Clinics"
+        className={`h-12 w-auto md:h-14 ${light ? "brightness-0 invert" : ""}`}
+      />
+      <div className={`hidden h-10 w-px sm:block ${light ? "bg-white/20" : "bg-border"}`} aria-hidden />
+      <div className="hidden leading-tight sm:block">
+        <div className={`font-display text-base italic ${light ? "text-white" : "text-primary"}`}>Dr. Lakshmi Rao</div>
+        <div className={`text-[9px] uppercase tracking-[0.32em] ${light ? "text-white/70" : "text-muted-foreground"}`} style={{ fontFamily: "var(--font-serif-caps)" }}>Gastro · Hepato-Biliary</div>
       </div>
     </a>
   );
