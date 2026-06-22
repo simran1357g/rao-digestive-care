@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef, type ReactNode, type ElementType } from "react";
 import logo from "@/assets/logo.png";
 import doctorAsset from "@/assets/doctor.asset.json";
 import interior1Asset from "@/assets/interior1.asset.json";
@@ -10,6 +11,30 @@ import {
   Microscope, ShieldCheck, HeartPulse, Sparkles, ArrowRight, CheckCircle2,
   Pill, FlaskConical, ScanLine,
 } from "lucide-react";
+
+function Reveal({ children, delay = 0, as, className = "" }: { children: ReactNode; delay?: 0 | 1 | 2 | 3 | 4; as?: ElementType; className?: string }) {
+  const Tag = (as ?? "div") as ElementType;
+  const ref = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            el.classList.add("is-visible");
+            io.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  const delayClass = delay ? ` reveal-delay-${delay}` : "";
+  return <Tag ref={ref} className={`reveal${delayClass} ${className}`}>{children}</Tag>;
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -104,40 +129,40 @@ function Nav() {
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-hero text-primary-foreground">
-      <img src={heroBg} alt="" aria-hidden className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-screen" />
-      <div className="absolute -right-32 -top-32 h-[480px] w-[480px] rounded-full bg-[var(--gold)] opacity-20 blur-3xl" />
-      <div className="absolute -left-24 bottom-0 h-[380px] w-[380px] rounded-full bg-[oklch(0.5_0.15_260)] opacity-30 blur-3xl" />
+      <img src={heroBg} alt="" aria-hidden className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-screen animate-fade-in" />
+      <div className="animate-blob absolute -right-32 -top-32 h-[480px] w-[480px] rounded-full bg-[var(--gold)] opacity-20 blur-3xl" />
+      <div className="animate-blob absolute -left-24 bottom-0 h-[380px] w-[380px] rounded-full bg-[oklch(0.5_0.15_260)] opacity-30 blur-3xl" style={{ animationDelay: "-6s" }} />
 
       <div className="container-x relative grid items-center gap-14 py-20 md:grid-cols-[1.05fr_0.95fr] md:py-28 lg:py-32">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.22em] text-white/80 backdrop-blur">
+          <div className="animate-fade-up inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.22em] text-white/80 backdrop-blur" style={{ animationDelay: "0.05s" }}>
             <Sparkles className="h-3.5 w-3.5 text-[var(--gold)]" />
             Kosha Clinics · Dehradun
           </div>
 
-          <h1 className="mt-7 font-display text-5xl leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 className="animate-fade-up mt-7 font-display text-5xl leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl" style={{ animationDelay: "0.15s" }}>
             Expert care for your <span className="italic text-gradient-gold">digestive</span> & liver health.
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">
+          <p className="animate-fade-up mt-6 max-w-xl text-lg leading-relaxed text-white/75" style={{ animationDelay: "0.3s" }}>
             Meet <span className="text-white">Dr. Lakshmi Rao</span> — Gastrointestinal &
             Hepato-Biliary Specialist offering personalised, advanced gastro care in Dehradun.
           </p>
 
-          <div className="mt-9 flex flex-wrap items-center gap-3">
-            <a href={TEL} className="group inline-flex items-center gap-2 rounded-full bg-[var(--gold)] px-7 py-3.5 text-sm font-semibold text-primary shadow-luxe transition hover:brightness-110">
+          <div className="animate-fade-up mt-9 flex flex-wrap items-center gap-3" style={{ animationDelay: "0.45s" }}>
+            <a href={TEL} className="btn-shine group inline-flex items-center gap-2 rounded-full bg-[var(--gold)] px-7 py-3.5 text-sm font-semibold text-primary shadow-luxe transition hover:brightness-110 hover:-translate-y-0.5">
               <Phone className="h-4 w-4" /> Call {PHONE_DISPLAY}
             </a>
-            <a href={WHATSAPP} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-7 py-3.5 text-sm font-medium text-white backdrop-blur transition hover:bg-white/10">
+            <a href={WHATSAPP} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-7 py-3.5 text-sm font-medium text-white backdrop-blur transition hover:bg-white/10 hover:-translate-y-0.5">
               <MessageCircle className="h-4 w-4" /> WhatsApp
             </a>
           </div>
 
-          <div className="mt-10 flex items-center gap-6 border-t border-white/10 pt-7">
+          <div className="animate-fade-up mt-10 flex items-center gap-6 border-t border-white/10 pt-7" style={{ animationDelay: "0.6s" }}>
             <div className="flex items-center gap-2">
               <div className="flex">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-[var(--gold)] text-[var(--gold)]" />
+                  <Star key={i} className="h-4 w-4 fill-[var(--gold)] text-[var(--gold)] animate-fade-in" style={{ animationDelay: `${0.7 + i * 0.08}s` }} />
                 ))}
               </div>
               <span className="text-sm font-medium text-white">4.6</span>
@@ -148,9 +173,9 @@ function Hero() {
           </div>
         </div>
 
-        <div className="relative">
-          <div className="absolute inset-0 -translate-x-6 translate-y-6 rounded-[2rem] bg-[var(--gold)]/30 blur-2xl" />
-          <div className="relative overflow-hidden rounded-[2rem] border border-white/15 bg-white/5 shadow-luxe backdrop-blur">
+        <div className="animate-scale-in relative" style={{ animationDelay: "0.25s" }}>
+          <div className="animate-blob absolute inset-0 -translate-x-6 translate-y-6 rounded-[2rem] bg-[var(--gold)]/30 blur-2xl" />
+          <div className="animate-float relative overflow-hidden rounded-[2rem] border border-white/15 bg-white/5 shadow-luxe backdrop-blur">
             <img
               src={doctorAsset.url}
               alt="Dr. Lakshmi Rao, Gastroenterologist in Dehradun"
@@ -203,11 +228,11 @@ function About() {
   return (
     <section id="about" className="py-24 md:py-32">
       <div className="container-x grid gap-14 md:grid-cols-2 md:items-center">
-        <div className="relative">
-          <div className="overflow-hidden rounded-[2rem] shadow-luxe">
+        <Reveal className="relative">
+          <div className="img-zoom overflow-hidden rounded-[2rem] shadow-luxe">
             <img src={interior1Asset.url} alt="Inside Kosha Clinics, Dehradun" className="h-[520px] w-full object-cover" loading="lazy" />
           </div>
-          <div className="absolute -bottom-8 -right-4 hidden w-60 rounded-2xl border border-border bg-card p-5 shadow-luxe md:block">
+          <div className="absolute -bottom-8 -right-4 hidden w-60 rounded-2xl border border-border bg-card p-5 shadow-luxe md:block animate-float">
             <div className="flex items-center gap-2 text-[var(--gold)]">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} className="h-4 w-4 fill-current" />
@@ -218,9 +243,9 @@ function About() {
             </p>
             <p className="mt-2 text-xs uppercase tracking-widest text-muted-foreground">Google Review</p>
           </div>
-        </div>
+        </Reveal>
 
-        <div>
+        <Reveal delay={1}>
           <SectionLabel>About the Doctor</SectionLabel>
           <h2 className="mt-5 font-display text-4xl leading-tight md:text-5xl">
             A trusted specialist in <span className="italic text-primary">gastro & liver</span> care.
@@ -233,16 +258,16 @@ function About() {
           </p>
           <ul className="mt-8 grid gap-3 sm:grid-cols-2">
             {trustPoints.map((p) => (
-              <li key={p} className="flex items-start gap-2 text-sm">
+              <li key={p} className="flex items-start gap-2 text-sm transition hover:translate-x-1">
                 <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--gold)]" />
                 <span className="text-foreground/80">{p}</span>
               </li>
             ))}
           </ul>
-          <a href="#contact" className="mt-10 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-soft transition hover:opacity-90">
-            Book a Consultation <ArrowRight className="h-4 w-4" />
+          <a href="#contact" className="btn-shine mt-10 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-soft transition hover:-translate-y-0.5 hover:opacity-95">
+            Book a Consultation <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
           </a>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -252,25 +277,26 @@ function Services() {
   return (
     <section id="services" className="bg-secondary/50 py-24 md:py-32">
       <div className="container-x">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <SectionLabel>Specialised Services</SectionLabel>
           <h2 className="mt-5 font-display text-4xl md:text-5xl">Comprehensive digestive & liver care</h2>
           <p className="mt-5 text-muted-foreground">
             From routine consultations to advanced endoscopic procedures — delivered with precision,
             empathy and modern technology.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map(({ icon: Icon, title, desc }) => (
-            <article key={title} className="group relative overflow-hidden rounded-2xl border border-border bg-card p-7 transition hover:-translate-y-1 hover:shadow-luxe">
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent opacity-0 transition group-hover:opacity-100" />
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/5 text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
+          {services.map(({ icon: Icon, title, desc }, i) => (
+            <Reveal key={title} as="article" delay={(i % 4) as 0 | 1 | 2 | 3} className="card-lift group relative overflow-hidden rounded-2xl border border-border bg-card p-7 hover:shadow-luxe">
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent opacity-0 transition group-hover:opacity-100" />
+              <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-[var(--gold)]/10 opacity-0 blur-2xl transition duration-500 group-hover:opacity-100" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/5 text-primary transition duration-500 group-hover:bg-primary group-hover:text-primary-foreground group-hover:rotate-6">
                 <Icon className="h-5 w-5" />
               </div>
               <h3 className="mt-6 font-display text-xl text-primary">{title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{desc}</p>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -281,9 +307,9 @@ function Services() {
 function WhyUs() {
   return (
     <section id="why" className="relative overflow-hidden bg-hero py-24 text-primary-foreground md:py-32">
-      <div className="absolute -right-40 top-1/3 h-[420px] w-[420px] rounded-full bg-[var(--gold)] opacity-15 blur-3xl" />
+      <div className="animate-blob absolute -right-40 top-1/3 h-[420px] w-[420px] rounded-full bg-[var(--gold)] opacity-15 blur-3xl" />
       <div className="container-x grid gap-14 md:grid-cols-[1fr_1.1fr] md:items-center">
-        <div>
+        <Reveal>
           <SectionLabel>Why Choose Us</SectionLabel>
           <h2 className="mt-5 font-display text-4xl text-white md:text-5xl">
             Healthcare that feels <span className="italic text-gradient-gold">personal</span>.
@@ -292,7 +318,7 @@ function WhyUs() {
             We combine modern diagnostics with the unhurried attention every patient deserves —
             so you leave informed, reassured, and on a clear path to better health.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid gap-5 sm:grid-cols-2">
           {[
@@ -300,11 +326,11 @@ function WhyUs() {
             { t: "Personalised Plans", d: "Treatment tailored to your history & lifestyle." },
             { t: "Transparent Care", d: "Clear explanations at every step of your journey." },
             { t: "Modern Environment", d: "A calm, hygienic, hospitality-grade clinic space." },
-          ].map((it) => (
-            <div key={it.t} className="rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur">
+          ].map((it, i) => (
+            <Reveal key={it.t} delay={(i % 4) as 0 | 1 | 2 | 3} className="card-lift rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur hover:border-[var(--gold)]/40 hover:bg-white/10">
               <div className="font-display text-xl text-white">{it.t}</div>
               <p className="mt-2 text-sm text-white/70">{it.d}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -316,25 +342,25 @@ function Clinic() {
   return (
     <section id="clinic" className="py-24 md:py-32">
       <div className="container-x">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <SectionLabel>The Clinic</SectionLabel>
           <h2 className="mt-5 font-display text-4xl md:text-5xl">A space designed for healing</h2>
           <p className="mt-5 text-muted-foreground">
             Located in the heart of Race Course, Dehradun — Kosha Clinics offers a calm,
             hospitality-inspired environment for unhurried consultations and modern procedures.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-14 grid gap-5 md:grid-cols-3">
-          <div className="overflow-hidden rounded-2xl shadow-soft md:col-span-2 md:row-span-2">
+          <Reveal className="img-zoom overflow-hidden rounded-2xl shadow-soft md:col-span-2 md:row-span-2">
             <img src={interior2Asset.url} alt="Kosha Clinics reception" className="h-full w-full object-cover" loading="lazy" />
-          </div>
-          <div className="overflow-hidden rounded-2xl shadow-soft">
+          </Reveal>
+          <Reveal delay={1} className="img-zoom overflow-hidden rounded-2xl shadow-soft">
             <img src={exteriorAsset.url} alt="Kosha Clinics entrance, Dehradun" className="h-64 w-full object-cover" loading="lazy" />
-          </div>
-          <div className="overflow-hidden rounded-2xl shadow-soft">
+          </Reveal>
+          <Reveal delay={2} className="img-zoom overflow-hidden rounded-2xl shadow-soft">
             <img src={interior1Asset.url} alt="Kosha Clinics waiting area" className="h-64 w-full object-cover" loading="lazy" />
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
