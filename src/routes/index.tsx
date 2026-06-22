@@ -307,9 +307,9 @@ function Services() {
 function WhyUs() {
   return (
     <section id="why" className="relative overflow-hidden bg-hero py-24 text-primary-foreground md:py-32">
-      <div className="absolute -right-40 top-1/3 h-[420px] w-[420px] rounded-full bg-[var(--gold)] opacity-15 blur-3xl" />
+      <div className="animate-blob absolute -right-40 top-1/3 h-[420px] w-[420px] rounded-full bg-[var(--gold)] opacity-15 blur-3xl" />
       <div className="container-x grid gap-14 md:grid-cols-[1fr_1.1fr] md:items-center">
-        <div>
+        <Reveal>
           <SectionLabel>Why Choose Us</SectionLabel>
           <h2 className="mt-5 font-display text-4xl text-white md:text-5xl">
             Healthcare that feels <span className="italic text-gradient-gold">personal</span>.
@@ -318,7 +318,7 @@ function WhyUs() {
             We combine modern diagnostics with the unhurried attention every patient deserves —
             so you leave informed, reassured, and on a clear path to better health.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid gap-5 sm:grid-cols-2">
           {[
@@ -326,11 +326,11 @@ function WhyUs() {
             { t: "Personalised Plans", d: "Treatment tailored to your history & lifestyle." },
             { t: "Transparent Care", d: "Clear explanations at every step of your journey." },
             { t: "Modern Environment", d: "A calm, hygienic, hospitality-grade clinic space." },
-          ].map((it) => (
-            <div key={it.t} className="rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur">
+          ].map((it, i) => (
+            <Reveal key={it.t} delay={(i % 4) as 0 | 1 | 2 | 3} className="card-lift rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur hover:border-[var(--gold)]/40 hover:bg-white/10">
               <div className="font-display text-xl text-white">{it.t}</div>
               <p className="mt-2 text-sm text-white/70">{it.d}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
