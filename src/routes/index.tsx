@@ -76,16 +76,54 @@ const trustPoints = [
 function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SvgDefs />
       <Nav />
       <Hero />
+      <WaveDivider flip />
       <TrustBar />
       <About />
       <Services />
+      <WaveDivider />
       <WhyUs />
+      <WaveDivider flip />
       <Clinic />
       <Contact />
       <Footer />
       <MobileCTA />
+    </div>
+  );
+}
+
+function SvgDefs() {
+  return (
+    <svg width="0" height="0" className="absolute" aria-hidden>
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -10" result="goo" />
+          <feБlendNotUsed />
+          <feBlend in="SourceGraphic" in2="goo" />
+        </filter>
+      </defs>
+    </svg>
+  );
+}
+
+function WaveDivider({ flip = false }: { flip?: boolean }) {
+  return (
+    <div className={`wave-divider -my-px ${flip ? "rotate-180" : ""}`} aria-hidden>
+      <svg viewBox="0 0 2880 80" preserveAspectRatio="none">
+        <path
+          className="wave-path-2"
+          fill="oklch(0.96 0.015 80)"
+          d="M0 40 Q 180 0 360 40 T 720 40 T 1080 40 T 1440 40 T 1800 40 T 2160 40 T 2520 40 T 2880 40 V80 H0 Z"
+        />
+        <path
+          className="wave-path"
+          fill="oklch(0.99 0.005 80)"
+          d="M0 50 Q 180 10 360 50 T 720 50 T 1080 50 T 1440 50 T 1800 50 T 2160 50 T 2520 50 T 2880 50 V80 H0 Z"
+        />
+      </svg>
     </div>
   );
 }
