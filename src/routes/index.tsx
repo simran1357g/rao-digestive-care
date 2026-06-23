@@ -213,7 +213,11 @@ function Hero() {
         </div>
 
         <div className="animate-scale-in relative" style={{ animationDelay: "0.25s" }}>
-          <div className="animate-blob absolute inset-0 -translate-x-6 translate-y-6 rounded-[2rem] bg-[var(--gold)]/30 blur-2xl" />
+          <div className="gooey pointer-events-none absolute -inset-10 -z-0">
+            <div className="animate-liquid absolute left-4 top-8 h-72 w-72 bg-[var(--gold)]/40 blur-2xl" />
+            <div className="animate-liquid-slow absolute -right-6 bottom-4 h-80 w-80 bg-[oklch(0.5_0.15_260)]/45 blur-2xl" style={{ animationDelay: "-8s" }} />
+            <div className="animate-liquid absolute right-16 top-1/3 h-56 w-56 bg-[var(--gold-soft)]/50 blur-2xl" style={{ animationDelay: "-4s" }} />
+          </div>
           <div className="animate-float relative overflow-hidden rounded-[2rem] border border-white/15 bg-white/5 shadow-luxe backdrop-blur">
             <img
               src={doctorAsset.url}
@@ -229,6 +233,7 @@ function Hero() {
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );
