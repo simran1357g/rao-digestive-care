@@ -356,7 +356,12 @@ function Services() {
 function WhyUs() {
   return (
     <section id="why" className="relative overflow-hidden bg-hero py-24 text-primary-foreground md:py-32">
-      <div className="animate-blob absolute -right-40 top-1/3 h-[420px] w-[420px] rounded-full bg-[var(--gold)] opacity-15 blur-3xl" />
+      <div className="liquid-mesh pointer-events-none absolute inset-0 mix-blend-screen opacity-80" />
+      <div className="gooey pointer-events-none absolute inset-0">
+        <div className="animate-liquid absolute -right-40 top-1/3 h-[420px] w-[420px] bg-[var(--gold)] opacity-20 blur-3xl" />
+        <div className="animate-liquid-slow absolute -left-20 bottom-10 h-[340px] w-[340px] bg-[oklch(0.5_0.15_260)] opacity-30 blur-3xl" style={{ animationDelay: "-7s" }} />
+      </div>
+
       <div className="container-x grid gap-14 md:grid-cols-[1fr_1.1fr] md:items-center">
         <Reveal>
           <SectionLabel>Why Choose Us</SectionLabel>
