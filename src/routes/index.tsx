@@ -194,7 +194,7 @@ function Hero() {
           </p>
 
           <div className="animate-fade-up mt-9 flex flex-wrap items-center gap-3" style={{ animationDelay: "0.45s" }}>
-            <a href={TEL} className="btn-shine group inline-flex items-center gap-2 rounded-full bg-[var(--gold)] px-7 py-3.5 text-sm font-semibold text-primary shadow-luxe transition hover:brightness-110 hover:-translate-y-0.5">
+            <a href={TEL} className="btn-shine ripple group inline-flex items-center gap-2 rounded-full bg-[var(--gold)] px-7 py-3.5 text-sm font-semibold text-primary shadow-luxe transition hover:brightness-110 hover:-translate-y-0.5">
               <Phone className="h-4 w-4" /> Call {PHONE_DISPLAY}
             </a>
             <a href={WHATSAPP} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-7 py-3.5 text-sm font-medium text-white backdrop-blur transition hover:bg-white/10 hover:-translate-y-0.5">
@@ -313,7 +313,7 @@ function About() {
               </li>
             ))}
           </ul>
-          <a href="#contact" className="btn-shine mt-10 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-soft transition hover:-translate-y-0.5 hover:opacity-95">
+          <a href="#contact" className="btn-shine ripple mt-10 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-soft transition hover:-translate-y-0.5 hover:opacity-95">
             Book a Consultation <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
           </a>
         </Reveal>
@@ -381,7 +381,7 @@ function WhyUs() {
             { t: "Transparent Care", d: "Clear explanations at every step of your journey." },
             { t: "Modern Environment", d: "A calm, hygienic, hospitality-grade clinic space." },
           ].map((it, i) => (
-            <Reveal key={it.t} delay={(i % 4) as 0 | 1 | 2 | 3} className="card-lift rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur hover:border-[var(--gold)]/40 hover:bg-white/10">
+            <Reveal key={it.t} delay={(i % 4) as 0 | 1 | 2 | 3} className="liquid-card rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur hover:border-[var(--gold)]/40 hover:bg-white/10">
               <div className="font-display text-xl text-white">{it.t}</div>
               <p className="mt-2 text-sm text-white/70">{it.d}</p>
             </Reveal>
