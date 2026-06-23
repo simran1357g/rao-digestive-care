@@ -5,6 +5,7 @@ import doctorAsset from "@/assets/doctor.asset.json";
 import interior1Asset from "@/assets/interior1.asset.json";
 import interior2Asset from "@/assets/interior2.asset.json";
 import exteriorAsset from "@/assets/exterior.asset.json";
+import clinicFrontAsset from "@/assets/clinic-front.png.asset.json";
 import heroBg from "@/assets/hero-bg.jpg";
 import {
   Phone, MessageCircle, MapPin, Clock, Star, Stethoscope, Activity,
@@ -230,7 +231,7 @@ function About() {
       <div className="container-x grid gap-14 md:grid-cols-2 md:items-center">
         <Reveal className="relative">
           <div className="img-zoom overflow-hidden rounded-[2rem] shadow-luxe">
-            <img src={interior1Asset.url} alt="Inside Kosha Clinics, Dehradun" className="h-[520px] w-full object-cover" loading="lazy" />
+            <img src={clinicFrontAsset.url} alt="Kosha Clinics entrance, Dehradun" className="h-[520px] w-full object-cover" loading="lazy" />
           </div>
           <div className="absolute -bottom-8 -right-4 hidden w-60 rounded-2xl border border-border bg-card p-5 shadow-luxe md:block animate-float">
             <div className="flex items-center gap-2 text-[var(--gold)]">
