@@ -76,16 +76,54 @@ const trustPoints = [
 function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SvgDefs />
       <Nav />
       <Hero />
+      <WaveDivider flip />
       <TrustBar />
       <About />
       <Services />
+      <WaveDivider />
       <WhyUs />
+      <WaveDivider flip />
       <Clinic />
       <Contact />
       <Footer />
       <MobileCTA />
+    </div>
+  );
+}
+
+function SvgDefs() {
+  return (
+    <svg width="0" height="0" className="absolute" aria-hidden>
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -10" result="goo" />
+          <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+          <feBlend in="SourceGraphic" in2="goo" />
+        </filter>
+      </defs>
+    </svg>
+  );
+}
+
+function WaveDivider({ flip = false }: { flip?: boolean }) {
+  return (
+    <div className={`wave-divider -my-px ${flip ? "rotate-180" : ""}`} aria-hidden>
+      <svg viewBox="0 0 2880 80" preserveAspectRatio="none">
+        <path
+          className="wave-path-2"
+          fill="oklch(0.96 0.015 80)"
+          d="M0 40 Q 180 0 360 40 T 720 40 T 1080 40 T 1440 40 T 1800 40 T 2160 40 T 2520 40 T 2880 40 V80 H0 Z"
+        />
+        <path
+          className="wave-path"
+          fill="oklch(0.99 0.005 80)"
+          d="M0 50 Q 180 10 360 50 T 720 50 T 1080 50 T 1440 50 T 1800 50 T 2160 50 T 2520 50 T 2880 50 V80 H0 Z"
+        />
+      </svg>
     </div>
   );
 }
@@ -131,8 +169,13 @@ function Hero() {
   return (
     <section className="relative overflow-hidden bg-hero text-primary-foreground">
       <img src={heroBg} alt="" aria-hidden className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-screen animate-fade-in" />
-      <div className="animate-blob absolute -right-32 -top-32 h-[480px] w-[480px] rounded-full bg-[var(--gold)] opacity-20 blur-3xl" />
-      <div className="animate-blob absolute -left-24 bottom-0 h-[380px] w-[380px] rounded-full bg-[oklch(0.5_0.15_260)] opacity-30 blur-3xl" style={{ animationDelay: "-6s" }} />
+      <div className="liquid-mesh pointer-events-none absolute inset-0 mix-blend-screen opacity-90" />
+      <div className="gooey pointer-events-none absolute inset-0">
+        <div className="animate-liquid absolute -right-32 -top-32 h-[480px] w-[480px] bg-[var(--gold)] opacity-25 blur-3xl" />
+        <div className="animate-liquid-slow absolute -left-24 bottom-0 h-[380px] w-[380px] bg-[oklch(0.5_0.15_260)] opacity-35 blur-3xl" style={{ animationDelay: "-6s" }} />
+        <div className="animate-liquid absolute left-1/3 top-1/4 h-[260px] w-[260px] bg-[var(--gold-soft)] opacity-20 blur-3xl" style={{ animationDelay: "-10s" }} />
+      </div>
+
 
       <div className="container-x relative grid items-center gap-14 py-20 md:grid-cols-[1.05fr_0.95fr] md:py-28 lg:py-32">
         <div>
@@ -151,7 +194,7 @@ function Hero() {
           </p>
 
           <div className="animate-fade-up mt-9 flex flex-wrap items-center gap-3" style={{ animationDelay: "0.45s" }}>
-            <a href={TEL} className="btn-shine group inline-flex items-center gap-2 rounded-full bg-[var(--gold)] px-7 py-3.5 text-sm font-semibold text-primary shadow-luxe transition hover:brightness-110 hover:-translate-y-0.5">
+            <a href={TEL} className="btn-shine ripple group inline-flex items-center gap-2 rounded-full bg-[var(--gold)] px-7 py-3.5 text-sm font-semibold text-primary shadow-luxe transition hover:brightness-110 hover:-translate-y-0.5">
               <Phone className="h-4 w-4" /> Call {PHONE_DISPLAY}
             </a>
             <a href={WHATSAPP} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-7 py-3.5 text-sm font-medium text-white backdrop-blur transition hover:bg-white/10 hover:-translate-y-0.5">
@@ -175,7 +218,11 @@ function Hero() {
         </div>
 
         <div className="animate-scale-in relative" style={{ animationDelay: "0.25s" }}>
-          <div className="animate-blob absolute inset-0 -translate-x-6 translate-y-6 rounded-[2rem] bg-[var(--gold)]/30 blur-2xl" />
+          <div className="gooey pointer-events-none absolute -inset-10 -z-0">
+            <div className="animate-liquid absolute left-4 top-8 h-72 w-72 bg-[var(--gold)]/40 blur-2xl" />
+            <div className="animate-liquid-slow absolute -right-6 bottom-4 h-80 w-80 bg-[oklch(0.5_0.15_260)]/45 blur-2xl" style={{ animationDelay: "-8s" }} />
+            <div className="animate-liquid absolute right-16 top-1/3 h-56 w-56 bg-[var(--gold-soft)]/50 blur-2xl" style={{ animationDelay: "-4s" }} />
+          </div>
           <div className="animate-float relative overflow-hidden rounded-[2rem] border border-white/15 bg-white/5 shadow-luxe backdrop-blur">
             <img
               src={doctorAsset.url}
@@ -191,6 +238,7 @@ function Hero() {
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );
@@ -265,7 +313,7 @@ function About() {
               </li>
             ))}
           </ul>
-          <a href="#contact" className="btn-shine mt-10 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-soft transition hover:-translate-y-0.5 hover:opacity-95">
+          <a href="#contact" className="btn-shine ripple mt-10 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-soft transition hover:-translate-y-0.5 hover:opacity-95">
             Book a Consultation <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
           </a>
         </Reveal>
@@ -289,7 +337,7 @@ function Services() {
 
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {services.map(({ icon: Icon, title, desc }, i) => (
-            <Reveal key={title} as="article" delay={(i % 4) as 0 | 1 | 2 | 3} className="card-lift group relative overflow-hidden rounded-2xl border border-border bg-card p-7 hover:shadow-luxe">
+            <Reveal key={title} as="article" delay={(i % 4) as 0 | 1 | 2 | 3} className="liquid-card group relative overflow-hidden rounded-2xl border border-border bg-card p-7 hover:shadow-luxe">
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent opacity-0 transition group-hover:opacity-100" />
               <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-[var(--gold)]/10 opacity-0 blur-2xl transition duration-500 group-hover:opacity-100" />
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/5 text-primary transition duration-500 group-hover:bg-primary group-hover:text-primary-foreground group-hover:rotate-6">
@@ -308,7 +356,12 @@ function Services() {
 function WhyUs() {
   return (
     <section id="why" className="relative overflow-hidden bg-hero py-24 text-primary-foreground md:py-32">
-      <div className="animate-blob absolute -right-40 top-1/3 h-[420px] w-[420px] rounded-full bg-[var(--gold)] opacity-15 blur-3xl" />
+      <div className="liquid-mesh pointer-events-none absolute inset-0 mix-blend-screen opacity-80" />
+      <div className="gooey pointer-events-none absolute inset-0">
+        <div className="animate-liquid absolute -right-40 top-1/3 h-[420px] w-[420px] bg-[var(--gold)] opacity-20 blur-3xl" />
+        <div className="animate-liquid-slow absolute -left-20 bottom-10 h-[340px] w-[340px] bg-[oklch(0.5_0.15_260)] opacity-30 blur-3xl" style={{ animationDelay: "-7s" }} />
+      </div>
+
       <div className="container-x grid gap-14 md:grid-cols-[1fr_1.1fr] md:items-center">
         <Reveal>
           <SectionLabel>Why Choose Us</SectionLabel>
@@ -328,7 +381,7 @@ function WhyUs() {
             { t: "Transparent Care", d: "Clear explanations at every step of your journey." },
             { t: "Modern Environment", d: "A calm, hygienic, hospitality-grade clinic space." },
           ].map((it, i) => (
-            <Reveal key={it.t} delay={(i % 4) as 0 | 1 | 2 | 3} className="card-lift rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur hover:border-[var(--gold)]/40 hover:bg-white/10">
+            <Reveal key={it.t} delay={(i % 4) as 0 | 1 | 2 | 3} className="liquid-card rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur hover:border-[var(--gold)]/40 hover:bg-white/10">
               <div className="font-display text-xl text-white">{it.t}</div>
               <p className="mt-2 text-sm text-white/70">{it.d}</p>
             </Reveal>
