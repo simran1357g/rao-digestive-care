@@ -169,8 +169,13 @@ function Hero() {
   return (
     <section className="relative overflow-hidden bg-hero text-primary-foreground">
       <img src={heroBg} alt="" aria-hidden className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-screen animate-fade-in" />
-      <div className="animate-blob absolute -right-32 -top-32 h-[480px] w-[480px] rounded-full bg-[var(--gold)] opacity-20 blur-3xl" />
-      <div className="animate-blob absolute -left-24 bottom-0 h-[380px] w-[380px] rounded-full bg-[oklch(0.5_0.15_260)] opacity-30 blur-3xl" style={{ animationDelay: "-6s" }} />
+      <div className="liquid-mesh pointer-events-none absolute inset-0 mix-blend-screen opacity-90" />
+      <div className="gooey pointer-events-none absolute inset-0">
+        <div className="animate-liquid absolute -right-32 -top-32 h-[480px] w-[480px] bg-[var(--gold)] opacity-25 blur-3xl" />
+        <div className="animate-liquid-slow absolute -left-24 bottom-0 h-[380px] w-[380px] bg-[oklch(0.5_0.15_260)] opacity-35 blur-3xl" style={{ animationDelay: "-6s" }} />
+        <div className="animate-liquid absolute left-1/3 top-1/4 h-[260px] w-[260px] bg-[var(--gold-soft)] opacity-20 blur-3xl" style={{ animationDelay: "-10s" }} />
+      </div>
+
 
       <div className="container-x relative grid items-center gap-14 py-20 md:grid-cols-[1.05fr_0.95fr] md:py-28 lg:py-32">
         <div>
