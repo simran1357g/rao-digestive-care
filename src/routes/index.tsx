@@ -5,6 +5,7 @@ import doctorAsset from "@/assets/doctor.asset.json";
 import interior1Asset from "@/assets/interior1.asset.json";
 import interior2Asset from "@/assets/interior2.asset.json";
 import exteriorAsset from "@/assets/exterior.asset.json";
+import clinicFrontAsset from "@/assets/clinic-front.png.asset.json";
 import heroBg from "@/assets/hero-bg.jpg";
 import {
   Phone, MessageCircle, MapPin, Clock, Star, Stethoscope, Activity,
