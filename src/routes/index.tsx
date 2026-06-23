@@ -76,6 +76,7 @@ const trustPoints = [
 function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <LiquidDefs />
       <Nav />
       <Hero />
       <TrustBar />
@@ -87,6 +88,21 @@ function Home() {
       <Footer />
       <MobileCTA />
     </div>
+  );
+}
+
+function LiquidDefs() {
+  return (
+    <svg aria-hidden className="pointer-events-none absolute h-0 w-0">
+      <defs>
+        <filter id="liquid-goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="blur" />
+          <feColorMatrix in="blur" mode="matrix"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -10" result="goo" />
+          <feBlend in="SourceGraphic" in2="goo" />
+        </filter>
+      </defs>
+    </svg>
   );
 }
 
@@ -131,8 +147,11 @@ function Hero() {
   return (
     <section className="relative overflow-hidden bg-hero text-primary-foreground">
       <img src={heroBg} alt="" aria-hidden className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-screen animate-fade-in" />
-      <div className="animate-blob absolute -right-32 -top-32 h-[480px] w-[480px] rounded-full bg-[var(--gold)] opacity-20 blur-3xl" />
-      <div className="animate-blob absolute -left-24 bottom-0 h-[380px] w-[380px] rounded-full bg-[oklch(0.5_0.15_260)] opacity-30 blur-3xl" style={{ animationDelay: "-6s" }} />
+      <div className="goo pointer-events-none absolute inset-0">
+        <div className="animate-liquid absolute -right-32 -top-32 h-[480px] w-[480px] bg-[var(--gold)] opacity-30 blur-2xl" />
+        <div className="animate-liquid absolute -left-24 bottom-0 h-[380px] w-[380px] bg-[oklch(0.5_0.15_260)] opacity-40 blur-2xl" style={{ animationDelay: "-6s" }} />
+        <div className="animate-liquid-slow absolute left-1/3 top-1/4 h-[260px] w-[260px] bg-[oklch(0.7_0.13_75)] opacity-25 blur-2xl" style={{ animationDelay: "-10s" }} />
+      </div>
 
       <div className="container-x relative grid items-center gap-14 py-20 md:grid-cols-[1.05fr_0.95fr] md:py-28 lg:py-32">
         <div>
@@ -175,8 +194,8 @@ function Hero() {
         </div>
 
         <div className="animate-scale-in relative" style={{ animationDelay: "0.25s" }}>
-          <div className="animate-blob absolute inset-0 -translate-x-6 translate-y-6 rounded-[2rem] bg-[var(--gold)]/30 blur-2xl" />
-          <div className="animate-float relative overflow-hidden rounded-[2rem] border border-white/15 bg-white/5 shadow-luxe backdrop-blur">
+          <div className="animate-liquid absolute -inset-6 bg-[var(--gold)]/30 blur-3xl" />
+          <div className="animate-float card-liquid relative overflow-hidden border border-white/15 bg-white/5 shadow-luxe backdrop-blur">
             <img
               src={doctorAsset.url}
               alt="Dr. Lakshmi Rao, Gastroenterologist in Dehradun"
@@ -289,7 +308,7 @@ function Services() {
 
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {services.map(({ icon: Icon, title, desc }, i) => (
-            <Reveal key={title} as="article" delay={(i % 4) as 0 | 1 | 2 | 3} className="card-lift group relative overflow-hidden rounded-2xl border border-border bg-card p-7 hover:shadow-luxe">
+            <Reveal key={title} as="article" delay={(i % 4) as 0 | 1 | 2 | 3} className="card-lift card-liquid liquid-ripple group relative overflow-hidden border border-border bg-card p-7 hover:shadow-luxe">
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent opacity-0 transition group-hover:opacity-100" />
               <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-[var(--gold)]/10 opacity-0 blur-2xl transition duration-500 group-hover:opacity-100" />
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/5 text-primary transition duration-500 group-hover:bg-primary group-hover:text-primary-foreground group-hover:rotate-6">
