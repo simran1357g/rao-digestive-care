@@ -76,6 +76,7 @@ const trustPoints = [
 function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <LiquidDefs />
       <Nav />
       <Hero />
       <TrustBar />
@@ -87,6 +88,21 @@ function Home() {
       <Footer />
       <MobileCTA />
     </div>
+  );
+}
+
+function LiquidDefs() {
+  return (
+    <svg aria-hidden className="pointer-events-none absolute h-0 w-0">
+      <defs>
+        <filter id="liquid-goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="blur" />
+          <feColorMatrix in="blur" mode="matrix"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -10" result="goo" />
+          <feBlend in="SourceGraphic" in2="goo" />
+        </filter>
+      </defs>
+    </svg>
   );
 }
 
