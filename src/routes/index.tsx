@@ -194,8 +194,8 @@ function Hero() {
         </div>
 
         <div className="animate-scale-in relative" style={{ animationDelay: "0.25s" }}>
-          <div className="animate-blob absolute inset-0 -translate-x-6 translate-y-6 rounded-[2rem] bg-[var(--gold)]/30 blur-2xl" />
-          <div className="animate-float relative overflow-hidden rounded-[2rem] border border-white/15 bg-white/5 shadow-luxe backdrop-blur">
+          <div className="animate-liquid absolute -inset-6 bg-[var(--gold)]/30 blur-3xl" />
+          <div className="animate-float card-liquid relative overflow-hidden border border-white/15 bg-white/5 shadow-luxe backdrop-blur">
             <img
               src={doctorAsset.url}
               alt="Dr. Lakshmi Rao, Gastroenterologist in Dehradun"
