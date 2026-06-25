@@ -225,7 +225,7 @@ function Hero() {
           </div>
           <div className="animate-float relative overflow-hidden rounded-[2rem] border border-white/15 bg-white/5 shadow-luxe backdrop-blur">
             <img
-              src={doctorAsset.url}
+              src={doctorAsset}
               alt="Dr. Lakshmi Rao, Gastroenterologist in Dehradun"
               className="h-[560px] w-full object-cover object-top"
               width={800}
@@ -279,7 +279,7 @@ function About() {
       <div className="container-x grid gap-14 md:grid-cols-2 md:items-center">
         <Reveal className="relative">
           <div className="img-zoom overflow-hidden rounded-[2rem] shadow-luxe">
-            <img src={clinicFrontAsset.url} alt="Kosha Clinics entrance, Dehradun" className="h-[520px] w-full object-cover" loading="lazy" />
+            <img src={clinicFrontAsset} alt="Kosha Clinics entrance, Dehradun" className="h-[520px] w-full object-cover" loading="lazy" />
           </div>
           <div className="absolute -bottom-8 -right-4 hidden w-60 rounded-2xl border border-border bg-card p-5 shadow-luxe md:block animate-float">
             <div className="flex items-center gap-2 text-[var(--gold)]">
@@ -407,13 +407,13 @@ function Clinic() {
 
         <div className="mt-14 grid gap-5 md:grid-cols-3">
           <Reveal className="img-zoom overflow-hidden rounded-2xl shadow-soft md:col-span-2 md:row-span-2">
-            <img src={interior2Asset.url} alt="Kosha Clinics reception" className="h-full w-full object-cover" loading="lazy" />
+            <img src={interior2Asset} alt="Kosha Clinics reception" className="h-full w-full object-cover" loading="lazy" />
           </Reveal>
           <Reveal delay={1} className="img-zoom overflow-hidden rounded-2xl shadow-soft">
-            <img src={exteriorAsset.url} alt="Kosha Clinics entrance, Dehradun" className="h-64 w-full object-cover" loading="lazy" />
+            <img src={exteriorAsset} alt="Kosha Clinics entrance, Dehradun" className="h-64 w-full object-cover" loading="lazy" />
           </Reveal>
           <Reveal delay={2} className="img-zoom overflow-hidden rounded-2xl shadow-soft">
-            <img src={interior1Asset.url} alt="Kosha Clinics waiting area" className="h-64 w-full object-cover" loading="lazy" />
+            <img src={interior1Asset} alt="Kosha Clinics waiting area" className="h-64 w-full object-cover" loading="lazy" />
           </Reveal>
         </div>
       </div>
