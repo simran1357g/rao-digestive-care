@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, type ReactNode, type ElementType } from "react";
 import logo from "@/assets/logo.png";
-import doctorAsset from "@/assets/doctor.asset.json";
-import interior1Asset from "@/assets/interior1.asset.json";
-import interior2Asset from "@/assets/interior2.asset.json";
-import exteriorAsset from "@/assets/exterior.asset.json";
-import clinicFrontAsset from "@/assets/clinic-front.png.asset.json";
+import doctorAsset from "@/assets/doctor.png";
+import interior1Asset from "@/assets/interior1.png";
+import interior2Asset from "@/assets/interior2.png";
+import exteriorAsset from "@/assets/clinic-exterior.png";
+import clinicFrontAsset from "@/assets/clinic-front.png";
 import heroBg from "@/assets/hero-bg.jpg";
 import {
   Phone, MessageCircle, MapPin, Clock, Star, Stethoscope, Activity,
