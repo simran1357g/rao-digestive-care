@@ -134,7 +134,7 @@ function Logo({ light = false }: { light?: boolean }) {
       <img
         src={logo}
         alt="Kosha Clinics"
-        className={`h-12 w-auto md:h-14 ${light ? "brightness-0 invert" : ""}`}
+        className="h-12 w-auto md:h-14"
       />
       <div className={`hidden h-10 w-px sm:block ${light ? "bg-white/20" : "bg-border"}`} aria-hidden />
       <div className="hidden leading-tight sm:block">
